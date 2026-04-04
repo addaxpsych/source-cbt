@@ -1,0 +1,47 @@
+# Netlify Configuration File
+
+[build]
+  # Directory to deploy
+  publish = "."
+  
+  # Build command (not needed for static site, but can be used for optimization)
+  command = "echo 'Static site - no build needed'"
+
+[context.production]
+  # Production environment settings
+  environment = { NODE_ENV = "production" }
+
+[context.deploy-preview]
+  # Deploy preview settings
+  environment = { NODE_ENV = "development" }
+
+# Cache settings
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Redirects (optional - for future use)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Custom headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
