@@ -1460,3 +1460,558 @@ section h2 {
         padding: 2.25rem 1.5rem;
     }
 }
+
+/* ==========================================
+   Home Page — Logo Link
+   ========================================== */
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+}
+
+/* ==========================================
+   Home Page — Org About
+   ========================================== */
+
+.org-about {
+    text-align: center;
+}
+
+.org-about h2 {
+    margin-bottom: 1rem;
+}
+
+.org-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.org-stat-pill {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.75rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    min-width: 120px;
+}
+
+.org-stat-pill .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.org-stat-pill .stat-label {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-top: .25rem;
+}
+
+.org-mission {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--ink-2);
+}
+
+.org-partners-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.org-partners-strip img {
+    height: 52px;
+    object-fit: contain;
+    opacity: .65;
+    transition: opacity var(--transition);
+    filter: grayscale(30%);
+}
+
+.org-partners-strip img:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* ==========================================
+   Home Page — Founders
+   ========================================== */
+
+.founders-section {
+    background: var(--highlight);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.founders-section::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(ellipse, rgba(20, 145, 155, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.founders-section h2 {
+    margin-bottom: 1rem;
+}
+
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.founder-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+    padding: 2rem;
+    text-align: center;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.founder-card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: var(--gradient-primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.founder-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.founder-photo-wrap {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.25rem;
+    border: 4px solid white;
+    box-shadow: var(--shadow-sm);
+}
+
+.founder-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.founder-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: .5rem;
+}
+
+.founder-title {
+    color: var(--ink-2);
+    font-size: .9rem;
+    line-height: 1.7;
+}
+
+/* ==========================================
+   Home Page — Programs
+   ========================================== */
+
+.programs-section {
+    background: #fff;
+    padding: 5rem 0;
+}
+
+.programs-section h2 {
+    margin-bottom: 1rem;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.program-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.program-card-header {
+    background: var(--gradient-dark);
+    padding: 1.75rem;
+    position: relative;
+}
+
+.program-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: .28rem .7rem;
+    border-radius: 999px;
+    letter-spacing: .03em;
+}
+
+.badge-available {
+    background: var(--gold);
+    color: var(--primary-700);
+}
+
+.badge-soon {
+    background: rgba(154, 214, 218, .18);
+    color: var(--accent-soft);
+    border: 1px solid rgba(154, 214, 218, .45);
+}
+
+.badge-booked {
+    background: rgba(100, 116, 139, .25);
+    color: #cbd5e1;
+    border: 1px solid rgba(100, 116, 139, .4);
+}
+
+.program-card-booked {
+    opacity: .72;
+    filter: grayscale(25%);
+}
+
+.program-card-booked:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
+.btn-booked {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: .75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--highlight-2);
+    color: var(--muted);
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: default;
+    border: 1px solid var(--line-strong);
+}
+
+.trainer-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .8);
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.trainer-avatar-initials {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .8);
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-family: var(--font-secondary);
+}
+
+.program-card-title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.program-card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.program-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+}
+
+.program-meta li {
+    display: flex;
+    gap: .55rem;
+    align-items: flex-start;
+    font-size: .88rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+}
+
+.meta-icon {
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: .15rem;
+}
+
+.program-highlight {
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0;
+}
+
+.program-card-cta {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.program-card-cta .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+/* ==========================================
+   cbt.html — Back link
+   ========================================== */
+
+.nav-back-link {
+    color: var(--muted) !important;
+    font-size: .9rem;
+    opacity: .85;
+}
+
+.nav-back-link:hover {
+    color: var(--accent) !important;
+    opacity: 1;
+}
+
+/* ==========================================
+   Home Page — Responsive
+   ========================================== */
+
+@media (max-width: 900px) {
+    .founders-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .founders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .org-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ==========================================
+   WhatsApp Contact Block (dbt.html)
+   ========================================== */
+
+.whatsapp-contact {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.whatsapp-contact p {
+    font-size: 0.95rem !important;
+    opacity: 0.75 !important;
+    margin-bottom: 0 !important;
+}
+
+.divider-or {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    width: 100%;
+    max-width: 280px;
+}
+
+.divider-or::before,
+.divider-or::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: #25D366;
+    color: #fff;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.8rem 2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(37, 211, 102, 0.45);
+}
+
+/* ── Floating WhatsApp Button ──────────────────────────────── */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-whatsapp::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.4);
+    animation: wa-pulse 2.2s ease-out infinite;
+}
+
+@keyframes wa-pulse {
+    0%   { transform: scale(1);   opacity: 0.7; }
+    70%  { transform: scale(1.6); opacity: 0;   }
+    100% { transform: scale(1);   opacity: 0;   }
+}
+
+.floating-whatsapp:hover {
+    background: #1ebe5d;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+}
+
+/* ── Events Gallery Section ────────────────────────────────── */
+.events-section {
+    padding: 5rem 0;
+    background: var(--surface, #0b1728);
+}
+
+.events-section .section-eyebrow {
+    display: block;
+    text-align: center;
+}
+
+.events-section h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.events-section .section-subtitle {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.events-grid-item {
+    overflow: hidden;
+    border-radius: var(--radius, 1rem);
+    aspect-ratio: 4 / 3;
+    background: rgba(255,255,255,0.05);
+}
+
+.events-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.events-grid-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}

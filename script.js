@@ -99,7 +99,15 @@ function handleFormSubmission() {
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     handleFormSubmission();
-    
+
+    // Close mobile menu when an in-page anchor link is tapped
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const toggle = document.getElementById('nav-toggle');
+            if (toggle) toggle.checked = false;
+        });
+    });
+
     // Add loading animation
     document.body.style.opacity = '1';
 });
