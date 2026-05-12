@@ -1544,6 +1544,21 @@ section h2 {
     filter: none;
 }
 
+/* ── Parallax Section ──────────────────────── */
+.parallax-section {
+    min-height: 65vh;
+    background-image: url('assets/parallex.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .parallax-section {
+        background-attachment: scroll;
+    }
+}
+
 /* ==========================================
    Home Page — Founders
    ========================================== */
