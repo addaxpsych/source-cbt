@@ -18,6 +18,7 @@ Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`
 | `cbt.html` | Program detail page (CBT Fundamentals — Dr. Allen Miller) |
 | `cbt-anxiety.html` | Program detail page (CBT Anxiety & Personality — Dr. Sofia Chernoff) |
 | `dbt.html` | Program detail page (DBT Basic Training — Prof. Dr. Martin Bohus) |
+| `cbt-addiction.html` | Program detail page (CBT for Addictive Disorders — Dr. Bruce S. Liese, Beck Institute) |
 | `styles.css` | All styles, single shared file |
 | `script.js` | Smooth scroll, sticky nav shadow, IntersectionObserver fade-ins, mobile menu, lazy loading |
 | `assets/` | Trainer photos, logos. Filenames may be Arabic — use literal filenames in `src`, no URL-encoding needed |
@@ -67,7 +68,7 @@ Three mutually exclusive states for cards in `.programs-grid`:
 | Coming soon | `badge-soon` | *(none)* | `btn btn-secondary` mailto to `training@sourceforhelp.com` |
 | Fully booked | `badge-booked` | `program-card-booked` | `btn btn-booked` (non-clickable span) |
 
-Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (soon), CBT Anxiety & Personality (available), Complex Trauma (soon), Playful EMDR (soon), العلاج بالتراحم (soon), خلوة الصمت (soon).
+Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (available), CBT for Addiction (available), Complex Trauma (available), Playful EMDR (available), العلاج بالتراحم (soon), خلوة الصمت (available).
 
 ## Design Tokens
 
