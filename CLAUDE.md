@@ -6,9 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static Arabic RTL website for **مورد مساعدة** (Source for Help), advertising mental health training programs (CBT, DBT, Play Therapy, EMDR, and others). No build step — open any `.html` file directly in a browser to preview.
 
+Note: `readme.md` is stale legacy documentation from the original single-page version (it describes only CBT Fundamentals / Dr. Allen Miller). Treat **this file as the source of truth**, not `readme.md`.
+
 ## Deployment
 
-Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`. Push to `main` and Netlify auto-deploys. No build command needed.
+Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`. Push to `main` and Netlify auto-deploys. No build command needed. Config lives in `netlify.toml` (publish dir `.`, security headers, long-cache for `/assets/*`, no-cache revalidate for HTML/CSS/JS).
 
 ## Site Structure
 
@@ -28,7 +30,7 @@ Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`
 
 Copy `cbt-anxiety.html` as the template (most complete, supports multiple instructors). Sections in order: `hero → about (instructor) → program (modules) → details (card grid) → partnerships* → cta-section (#register) → footer`. All pages share the same `styles.css` and `script.js`.
 
-The **partnerships section** is only included when there is an actual external institutional partner (e.g., Beck Institute). Omit it entirely when مورد مساعدة is the sole organiser.
+The **partnerships section** is only included when there is an actual external institutional partner (e.g., Beck Institute). Omit it entirely when مورد مساعدة is the sole organiser. Inside `.partners-grid`, list **only the external partner** — مورد مساعدة is the host/platform, not a partner, so it must never appear as a `.partner-card`.
 
 The **hero partner block** (`.hero-partner` with logo) follows the same rule: only present when a named partner exists.
 
