@@ -1023,6 +1023,69 @@ section h2 {
 }
 
 /* ==========================================
+   Payment / Installments Table
+   ========================================== */
+
+.payment-table-title {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.payment-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: #fff;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+    font-size: 0.98rem;
+    min-width: 640px;
+}
+
+.payment-table thead th {
+    background: var(--gradient-primary);
+    color: #fff;
+    font-weight: 700;
+    padding: 1rem 1.1rem;
+    white-space: nowrap;
+}
+
+.payment-table tbody th,
+.payment-table tbody td {
+    padding: 0.9rem 1.1rem;
+    border-top: 1px solid rgba(10, 24, 38, 0.08);
+    color: var(--ink-2);
+    line-height: 1.7;
+}
+
+.payment-table tbody th {
+    color: var(--ink);
+    font-weight: 600;
+    background: rgba(11, 79, 108, 0.03);
+}
+
+.payment-pct {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.85em;
+}
+
+.payment-table .payment-row-discount th,
+.payment-table .payment-row-discount td {
+    background: rgba(201, 163, 92, 0.12);
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* ==========================================
    Partnerships
    ========================================== */
 
