@@ -43,7 +43,7 @@ The **partnerships section** is only included when there is an actual external i
 
 The **hero partner block** (`.hero-partner` with logo) follows the same rule: only present when a named partner exists.
 
-Add the **analytics & tracking block** (see "Analytics & Tracking" below) to the `<head>` of every new page — Clarity + GA4 near the top, Meta Pixel just before `</head>`.
+Add the **analytics & tracking block** (see "Analytics & Tracking" below) to every new page — GTM + Clarity + GA4 high in `<head>`, GTM noscript right after `<body>`, Meta Pixel just before `</head>`.
 
 Add the **floating WhatsApp button** (see below) to every new page just before `</body>`.
 
@@ -73,7 +73,26 @@ Every page has a fixed circular WhatsApp button (bottom-right, `.floating-whatsa
 
 ## Analytics & Tracking
 
-Every page carries three site-wide trackers. **All must be added to the `<head>` of any new page.** IDs are shared across the whole site.
+Every page carries four site-wide trackers. **All must be added to any new page.** IDs are shared across the whole site.
+
+**0 — Google Tag Manager (`GTM-NKNJHTB6`)**, two parts. The script goes as high in `<head>` as possible (it sits just above the Clarity block); the noscript goes immediately after the opening `<body>` tag:
+
+```html
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NKNJHTB6');</script>
+<!-- End Google Tag Manager -->
+```
+
+```html
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKNJHTB6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+```
 
 **1 & 2 — Microsoft Clarity (`ww87gujkdb`) + Google Analytics 4 (`G-WPP750949S`)**, placed high in `<head>`, right after the `<meta name="viewport">` tag:
 
