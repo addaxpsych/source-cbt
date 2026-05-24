@@ -108,6 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Programs dropdown (click to open/close)
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (dropdown) {
+        const dropdownToggle = dropdown.querySelector('.nav-dropdown-toggle');
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdown.classList.toggle('open');
+            dropdownToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close when clicking outside the dropdown
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
     // Add loading animation
     document.body.style.opacity = '1';
 });
@@ -210,7 +229,13 @@ if (window.performance && window.performance.timing) {
 // Add keyboard navigation support
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Close any open modals if implemented
+        // Close the programs dropdown if open
+        const openDropdown = document.querySelector('.nav-dropdown.open');
+        if (openDropdown) {
+            openDropdown.classList.remove('open');
+            const toggle = openDropdown.querySelector('.nav-dropdown-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
     }
 });
 
