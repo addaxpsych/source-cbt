@@ -12,6 +12,10 @@ Note: `readme.md` is stale legacy documentation from the original single-page ve
 
 Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`. Push to `main` and Netlify auto-deploys. No build command needed. Config lives in `netlify.toml` (publish dir `.`, security headers, long-cache for `/assets/*`, no-cache revalidate for HTML/CSS/JS).
 
+## Encoding (critical)
+
+All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-trip them through Windows PowerShell** (`Get-Content` → `Set-Content`): PS 5.1 reads UTF-8 as ANSI and re-encodes, corrupting every Arabic character into mojibake. For bulk text edits (e.g. cache-bust bumps across all pages) use the `Edit` tool or `sed` via the Bash tool — both are byte-safe for the ASCII edits while leaving UTF-8 bytes untouched.
+
 ## Site Structure
 
 | File | Purpose |
@@ -21,10 +25,15 @@ Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`
 | `cbt-anxiety.html` | Program detail page (CBT Anxiety & Personality — Dr. Sofia Chernoff) |
 | `dbt.html` | Program detail page (DBT Basic Training — Prof. Dr. Martin Bohus) |
 | `cbt-addiction.html` | Program detail page (CBT for Addictive Disorders — Dr. Bruce S. Liese, Beck Institute) |
+| `play-therapy.html` | Program detail page (Play Therapy — Ann Beckley-Forest) |
+| `complex-trauma.html` | Program detail page (Complex Trauma — Annie Monaco & Brooke Eaton) |
+| `playful-emdr.html` | Program detail page (Playful EMDR — Ann Beckley-Forest & Annie Monaco) |
+| `silent-retreat.html` | Program detail page (Silent Retreat — Randy, Zen teacher) |
 | `styles.css` | All styles, single shared file |
-| `script.js` | Smooth scroll, sticky nav shadow, IntersectionObserver fade-ins, mobile menu, lazy loading |
+| `script.js` | Smooth scroll, sticky nav shadow, IntersectionObserver fade-ins, mobile menu, programs dropdown, lazy loading |
 | `assets/` | Trainer photos, logos. Filenames may be Arabic — use literal filenames in `src`, no URL-encoding needed |
 | `events_images/` | Photos from past training events, shown in the "من فعالياتنا" gallery on `index.html` |
+| `data/` | Source documents for program content (e.g. `.docx` briefs); not served as part of the site |
 
 ## Adding a New Program Page
 
@@ -33,6 +42,8 @@ Copy `cbt-anxiety.html` as the template (most complete, supports multiple instru
 The **partnerships section** is only included when there is an actual external institutional partner (e.g., Beck Institute). Omit it entirely when مورد مساعدة is the sole organiser. Inside `.partners-grid`, list **only the external partner** — مورد مساعدة is the host/platform, not a partner, so it must never appear as a `.partner-card`.
 
 The **hero partner block** (`.hero-partner` with logo) follows the same rule: only present when a named partner exists.
+
+Add the **analytics & tracking block** (see "Analytics & Tracking" below) to the `<head>` of every new page — Clarity + GA4 near the top, Meta Pixel just before `</head>`.
 
 Add the **floating WhatsApp button** (see below) to every new page just before `</body>`.
 
@@ -60,6 +71,58 @@ Every page has a fixed circular WhatsApp button (bottom-right, `.floating-whatsa
 </a>
 ```
 
+## Analytics & Tracking
+
+Every page carries three site-wide trackers. **All must be added to the `<head>` of any new page.** IDs are shared across the whole site.
+
+**1 & 2 — Microsoft Clarity (`ww87gujkdb`) + Google Analytics 4 (`G-WPP750949S`)**, placed high in `<head>`, right after the `<meta name="viewport">` tag:
+
+```html
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ww87gujkdb");
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WPP750949S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WPP750949S');
+</script>
+```
+
+**3 — Meta Pixel (`995039913108308`)**, placed just before `</head>`:
+
+```html
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '995039913108308');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=995039913108308&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+```
+
+`index.html` additionally carries the **Facebook domain-verification** meta tag (`<meta name="facebook-domain-verification" content="na45dmettfbd9zee78nmxs7slptnyk" />`) near the top of `<head>` — home page only, not needed on other pages.
+
+These snippets are byte-safe ASCII; add them with the `Edit` tool (never round-trip the file through PowerShell — see "Encoding" above).
+
 ## Program Card States (index.html)
 
 Three mutually exclusive states for cards in `.programs-grid`:
@@ -71,6 +134,10 @@ Three mutually exclusive states for cards in `.programs-grid`:
 | Fully booked | `badge-booked` | `program-card-booked` | `btn btn-booked` (non-clickable span) |
 
 Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (available), CBT for Addiction (available), Complex Trauma (available), Playful EMDR (available), العلاج بالتراحم (soon), خلوة الصمت (available).
+
+## Header Programs Dropdown (index.html)
+
+The header nav's البرامج entry is a JS-driven dropdown (`.nav-dropdown` → `.nav-dropdown-toggle` button + `.nav-dropdown-menu`), not a section anchor. It lists **only the open-for-registration programs**, each linking to its detail page (booked/coming-soon programs are excluded). Toggle logic (click to open, close on outside-click / Escape) lives in `script.js`'s `DOMContentLoaded` block; the toggle is a `<button>` deliberately, to stay out of the `a[href^="#"]` smooth-scroll handler. On mobile it renders as a green pill inside the hamburger menu and expands inline. **When adding/removing an open program, update both the `.programs-grid` card and this dropdown.**
 
 ## Design Tokens
 
