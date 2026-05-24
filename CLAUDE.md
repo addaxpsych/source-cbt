@@ -43,7 +43,7 @@ The **partnerships section** is only included when there is an actual external i
 
 The **hero partner block** (`.hero-partner` with logo) follows the same rule: only present when a named partner exists.
 
-Add the **analytics & tracking block** (see "Analytics & Tracking" below) to every new page — GTM + Clarity + GA4 high in `<head>`, GTM noscript right after `<body>`, Meta Pixel just before `</head>`.
+Add the **analytics & tracking block** (see "Analytics & Tracking" below) to every new page — GTM script + Clarity high in `<head>`, GTM noscript right after `<body>`, Meta Pixel just before `</head>`. (GA4 is handled inside GTM — do not add a `gtag.js` snippet.)
 
 Add the **floating WhatsApp button** (see below) to every new page just before `</body>`.
 
@@ -73,7 +73,7 @@ Every page has a fixed circular WhatsApp button (bottom-right, `.floating-whatsa
 
 ## Analytics & Tracking
 
-Every page carries four site-wide trackers. **All must be added to any new page.** IDs are shared across the whole site.
+Every page carries three on-page trackers (GTM, Clarity, Meta Pixel). **All must be added to any new page.** IDs are shared across the whole site. **GA4 (`G-WPP750949S`) is *not* hardcoded** — it is loaded and managed inside GTM (the "Google Tag" + GA4 event tags), so do **not** add a `gtag.js` snippet to pages or it will double-count pageviews.
 
 **0 — Google Tag Manager (`GTM-NKNJHTB6`)**, two parts. The script goes as high in `<head>` as possible (it sits just above the Clarity block); the noscript goes immediately after the opening `<body>` tag:
 
@@ -94,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 ```
 
-**1 & 2 — Microsoft Clarity (`ww87gujkdb`) + Google Analytics 4 (`G-WPP750949S`)**, placed high in `<head>`, right after the `<meta name="viewport">` tag:
+**1 — Microsoft Clarity (`ww87gujkdb`)**, placed high in `<head>`, right after the `<meta name="viewport">` tag (just below the GTM script):
 
 ```html
 <!-- Microsoft Clarity -->
@@ -105,18 +105,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ww87gujkdb");
 </script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WPP750949S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WPP750949S');
-</script>
 ```
 
-**3 — Meta Pixel (`995039913108308`)**, placed just before `</head>`:
+**2 — Meta Pixel (`995039913108308`)**, placed just before `</head>`:
 
 ```html
 <!-- Meta Pixel Code -->
