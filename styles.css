@@ -2215,3 +2215,136 @@ section h2 {
         grid-template-columns: 1fr;
     }
 }
+
+/* ── Programs Timeline Section ─────────────────────────────── */
+.timeline-section {
+    padding: 5rem 0;
+    background: var(--highlight);
+}
+
+.timeline-section .section-eyebrow {
+    display: block;
+    text-align: center;
+}
+
+.timeline-section h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-section .section-subtitle {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 760px;
+    margin-inline: auto;
+    list-style: none;
+    padding: 0;
+}
+
+/* Vertical spine — sits on the start (right) edge in RTL */
+.timeline::before {
+    content: '';
+    position: absolute;
+    inset-block: 6px;
+    inset-inline-start: 7px;
+    width: 2px;
+    background: var(--gradient-primary);
+    border-radius: 999px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-inline-start: 2.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.5rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--highlight);
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+}
+
+.timeline-content {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1.1rem 1.4rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.timeline-content:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.timeline-date {
+    display: inline-block;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+}
+
+.timeline-title {
+    color: var(--ink);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 0.35rem;
+}
+
+.timeline-meta {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    .timeline-section {
+        padding: 3.5rem 0;
+    }
+
+    .timeline-section .section-subtitle {
+        margin-bottom: 2.25rem;
+    }
+
+    .timeline-item {
+        padding-inline-start: 2.25rem;
+    }
+
+    .timeline-marker {
+        width: 14px;
+        height: 14px;
+    }
+
+    .timeline::before {
+        inset-inline-start: 6px;
+    }
+
+    .timeline-content {
+        padding: 0.95rem 1.1rem;
+    }
+
+    .timeline-title {
+        font-size: 0.98rem;
+    }
+}
