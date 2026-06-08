@@ -51,11 +51,16 @@ When editing `styles.css` or `script.js`, update the `?v=YYYYMMDD` cache-bust st
 
 ## Registration & Contact
 
-All program registration CTAs link to the **same single Google Form**:
+**Each program has its own dedicated Google Form** — there is no longer a shared site-wide form (the old `forms.gle/jfznRRDA9aPHiVkD6` has been retired; do not reintroduce it). When adding a program page, use the dedicated form link the client provides for that program. Dedicated forms in use:
 
-```
-https://forms.gle/jfznRRDA9aPHiVkD6
-```
+| Program | Form |
+|---|---|
+| CBT for Addiction (`cbt-addiction.html`) | `https://forms.gle/QXyXSHbhEmMsP4xm8` + embedded iframe |
+| Play Therapy (`play-therapy.html`) | `https://forms.gle/wudGkTh739NkATqBA` + embedded iframe |
+| DBT (`dbt.html`) | embedded iframe (`docs.google.com/forms/d/e/1FAIpQLSdN-Y8I38.../viewform?embedded=true`) |
+| العلاج بالتراحم — CFT (`compassion-focused.html`) | embedded iframe (`docs.google.com/forms/d/e/1FAIpQLSdMdE6.../viewform?embedded=true`) |
+
+**If no dedicated form link has been provided for a program**, render the registration CTA as a **non-clickable "قريبًا" button** instead of a working "سجّل الآن"/"تقديم الآن" link — never fall back to a shared form. The disabled button is a `<span class="btn btn-large" aria-disabled="true">` styled with the muted tokens (`var(--highlight-2)`, `var(--muted)`, `var(--line-strong)`, `box-shadow:none; cursor:default; pointer-events:none;`). Programs currently in this state: cbt (CBT Fundamentals), cbt-anxiety, complex-trauma, playful-emdr, silent-retreat.
 
 For WhatsApp contact the number is **+201500990658** (`https://wa.me/201500990658`). This appears as both an inline button on `dbt.html` and as the floating button on all pages.
 
