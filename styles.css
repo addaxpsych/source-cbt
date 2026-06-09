@@ -1161,6 +1161,14 @@ section h2 {
     font-size: 0.85em;
 }
 
+.fee-egp {
+    display: block;
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.85em;
+    margin-top: 0.25rem;
+}
+
 .payment-table .payment-row-discount th,
 .payment-table .payment-row-discount td {
     background: rgba(201, 163, 92, 0.12);
