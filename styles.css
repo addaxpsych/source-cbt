@@ -2361,7 +2361,6 @@ section h2 {
 .reviews-section {
     padding: 5rem 0;
     background: var(--highlight-2);
-    overflow: hidden;
 }
 
 .reviews-section .section-eyebrow {
@@ -2417,36 +2416,17 @@ section h2 {
     font-size: 0.95rem;
 }
 
-/* Marquee rows */
-.reviews-marquee {
-    overflow: hidden;
-    padding: 0.75rem 0;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.reviews-track {
-    display: flex;
-    gap: 1.25rem;
-    width: max-content;
-    animation: reviews-scroll 110s linear infinite;
-}
-
-.reviews-track--reverse {
-    animation-direction: reverse;
-}
-
-.reviews-marquee:hover .reviews-track {
-    animation-play-state: paused;
-}
-
-@keyframes reviews-scroll {
-    to { transform: translateX(-50%); }
+/* Masonry wall */
+.reviews-grid {
+    column-count: 3;
+    column-gap: 1.25rem;
 }
 
 .review-card {
-    flex: 0 0 340px;
-    align-self: flex-start;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    break-inside: avoid;
     background: #fff;
     border: 1px solid var(--line);
     border-radius: var(--radius);
@@ -2483,6 +2463,18 @@ section h2 {
     font-weight: 600;
 }
 
+@media (max-width: 900px) {
+    .reviews-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .reviews-grid {
+        column-count: 1;
+    }
+}
+
 @media (max-width: 480px) {
     .reviews-section {
         padding: 3.5rem 0;
@@ -2498,18 +2490,6 @@ section h2 {
     }
 
     .review-card {
-        flex-basis: 78vw;
         padding: 1.5rem;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .reviews-marquee {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .reviews-track {
-        animation: none;
     }
 }
