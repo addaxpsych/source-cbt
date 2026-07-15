@@ -12,6 +12,8 @@ Note: `readme.md` is stale legacy documentation from the original single-page ve
 
 Deployed on Netlify from the `main` branch of `github.com/addaxpsych/source-cbt`. Push to `main` and Netlify auto-deploys. No build command needed. Config lives in `netlify.toml` (publish dir `.`, security headers, long-cache for `/assets/*`, no-cache revalidate for HTML/CSS/JS).
 
+Note: `netlify.toml` has a catch-all redirect (`/* → /index.html, status 200`) that silently serves the home page for any unrecognised URL rather than returning a 404. This means typos in page filenames won't surface as errors during testing.
+
 ## Encoding (critical)
 
 All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-trip them through Windows PowerShell** (`Get-Content` → `Set-Content`): PS 5.1 reads UTF-8 as ANSI and re-encodes, corrupting every Arabic character into mojibake. For bulk text edits (e.g. cache-bust bumps across all pages) use the `Edit` tool or `sed` via the Bash tool — both are byte-safe for the ASCII edits while leaving UTF-8 bytes untouched.
@@ -29,6 +31,9 @@ All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-
 | `complex-trauma.html` | Program detail page (Complex Trauma — Annie Monaco & Brooke Eaton) |
 | `playful-emdr.html` | Program detail page (Playful EMDR — Ann Beckley-Forest & Annie Monaco) |
 | `silent-retreat.html` | Program detail page (Silent Retreat — Randy, Zen teacher) |
+| `compassion-focused.html` | Program detail page (العلاج بالتراحم / CFT — داليا سرحان) |
+| `cbt-couples-families.html` | Program detail page (CBT for Couples & Families — Dr. Norman Cotterell & Dr. Wendy Wild, Beck Institute) |
+| `policies.html` | Privacy and policies page |
 | `styles.css` | All styles, single shared file |
 | `script.js` | Smooth scroll, sticky nav shadow, IntersectionObserver fade-ins, mobile menu, programs dropdown, lazy loading |
 | `assets/` | Trainer photos, logos. Filenames may be Arabic — use literal filenames in `src`, no URL-encoding needed |
@@ -145,14 +150,16 @@ Three mutually exclusive states for cards in `.programs-grid`:
 | State | Badge class | Card class | CTA |
 |---|---|---|---|
 | Open for registration | `badge-available` | *(none)* | `btn btn-primary` linking to detail page |
-| Coming soon | `badge-soon` | *(none)* | `btn btn-secondary` mailto to `training@sourceforhelp.com` |
-| Fully booked | `badge-booked` | `program-card-booked` | `btn btn-booked` (non-clickable span) |
+| Coming soon | `badge-soon` | *(none)* | `<span class="btn btn-booked">قريبًا</span>` (non-clickable) |
+| Fully booked | `badge-booked` | `program-card-booked` | `<span class="btn btn-booked">اكتمل التسجيل</span>` (non-clickable) |
 
-Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (available), CBT for Addiction (available), Complex Trauma (available), Playful EMDR (available), العلاج بالتراحم (soon), خلوة الصمت (available).
+Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (soon), CBT for Addiction (booked), CBT for Couples & Families (soon), Complex Trauma (soon), Playful EMDR (soon), Trauma-Based Family Therapy (soon), العلاج بالتراحم / CFT (available), خلوة الصمت (soon).
 
 ## Header Programs Dropdown (index.html)
 
 The header nav's البرامج entry is a JS-driven dropdown (`.nav-dropdown` → `.nav-dropdown-toggle` button + `.nav-dropdown-menu`), not a section anchor. It lists **only the open-for-registration programs**, each linking to its detail page (booked/coming-soon programs are excluded). Toggle logic (click to open, close on outside-click / Escape) lives in `script.js`'s `DOMContentLoaded` block; the toggle is a `<button>` deliberately, to stay out of the `a[href^="#"]` smooth-scroll handler. On mobile it renders as a green pill inside the hamburger menu and expands inline. **When adding/removing an open program, update both the `.programs-grid` card and this dropdown.**
+
+Currently listed: DBT (`dbt.html`), Play Therapy (`play-therapy.html`). العلاج بالتراحم / CFT (`compassion-focused.html`) is open for registration and should also be added to this dropdown.
 
 ## Design Tokens
 
