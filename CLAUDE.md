@@ -30,6 +30,7 @@ All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-
 | `play-therapy.html` | Program detail page (Play Therapy — Ann Beckley-Forest) |
 | `complex-trauma.html` | Program detail page (Complex Trauma — Annie Monaco & Brooke Eaton) |
 | `playful-emdr.html` | Program detail page (Playful EMDR — Ann Beckley-Forest & Annie Monaco) |
+| `family-therapy-teens.html` | Program detail page (العلاج الأسري للمراهقين / Trauma-Based Family Therapy — Annie Monaco) |
 | `silent-retreat.html` | Program detail page (Silent Retreat — Randy, Zen teacher) |
 | `compassion-focused.html` | Program detail page (العلاج بالتراحم / CFT — داليا سرحان) |
 | `cbt-couples-families.html` | Program detail page (CBT for Couples & Families — Dr. Norman Cotterell & Dr. Wendy Wild, Beck Institute) |
