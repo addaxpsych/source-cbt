@@ -33,7 +33,7 @@ All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-
 | `family-therapy-teens.html` | Program detail page (العلاج الأسري للمراهقين / Trauma-Based Family Therapy — Annie Monaco) |
 | `silent-retreat.html` | Program detail page (Silent Retreat — Randy, Zen teacher) |
 | `compassion-focused.html` | Program detail page (العلاج بالتراحم / CFT — داليا سرحان) |
-| `cbt-couples-families.html` | Program detail page (CBT for Couples & Families — Dr. Norman Cotterell & Dr. Wendy Wild, Beck Institute) |
+| `cbt-chronic-pain.html` | Program detail page (CBT for Chronic Pain and Medical Conditions — Dr. Michael A. Tompkins, Beck Institute) |
 | `policies.html` | Privacy and policies page |
 | `styles.css` | All styles, single shared file |
 | `script.js` | Smooth scroll, sticky nav shadow, IntersectionObserver fade-ins, mobile menu, programs dropdown, lazy loading |
@@ -66,7 +66,7 @@ When editing `styles.css` or `script.js`, update the `?v=YYYYMMDD` cache-bust st
 | DBT (`dbt.html`) | embedded iframe (`docs.google.com/forms/d/e/1FAIpQLSdN-Y8I38.../viewform?embedded=true`) |
 | العلاج بالتراحم — CFT (`compassion-focused.html`) | embedded iframe (`docs.google.com/forms/d/e/1FAIpQLSdMdE6.../viewform?embedded=true`) |
 
-**If no dedicated form link has been provided for a program**, render the registration CTA as a **non-clickable "قريبًا" button** instead of a working "سجّل الآن"/"تقديم الآن" link — never fall back to a shared form. The disabled button is a `<span class="btn btn-large" aria-disabled="true">` styled with the muted tokens (`var(--highlight-2)`, `var(--muted)`, `var(--line-strong)`, `box-shadow:none; cursor:default; pointer-events:none;`). Programs currently in this state: cbt (CBT Fundamentals), cbt-anxiety, complex-trauma, playful-emdr, silent-retreat.
+**If no dedicated form link has been provided for a program**, render the registration CTA as a **non-clickable "قريبًا" button** instead of a working "سجّل الآن"/"تقديم الآن" link — never fall back to a shared form. The disabled button is a `<span class="btn btn-large" aria-disabled="true">` styled with the muted tokens (`var(--highlight-2)`, `var(--muted)`, `var(--line-strong)`, `box-shadow:none; cursor:default; pointer-events:none;`). Programs currently in this state: cbt (CBT Fundamentals), cbt-anxiety, cbt-chronic-pain, complex-trauma, playful-emdr, silent-retreat.
 
 For WhatsApp contact the number is **+201145804645** (`https://wa.me/201145804645`). This appears as both an inline button on `dbt.html` and as the floating button on all pages.
 
@@ -154,7 +154,7 @@ Three mutually exclusive states for cards in `.programs-grid`:
 | Coming soon | `badge-soon` | *(none)* | `<span class="btn btn-booked">قريبًا</span>` (non-clickable) |
 | Fully booked | `badge-booked` | `program-card-booked` | `<span class="btn btn-booked">اكتمل التسجيل</span>` (non-clickable) |
 
-Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (soon), CBT for Addiction (booked), CBT for Couples & Families (soon), Complex Trauma (soon), Playful EMDR (soon), Trauma-Based Family Therapy (soon), العلاج بالتراحم / CFT (available), خلوة الصمت (soon).
+Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (soon), CBT for Addiction (booked), CBT for Chronic Pain and Medical Conditions (soon), Complex Trauma (soon), Playful EMDR (soon), Trauma-Based Family Therapy (soon), العلاج بالتراحم / CFT (available), خلوة الصمت (soon).
 
 ## Header Programs Dropdown (index.html)
 
