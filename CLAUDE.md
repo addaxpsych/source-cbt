@@ -64,7 +64,7 @@ When editing `styles.css` or `script.js`, update the `?v=YYYYMMDD` cache-bust st
 | CBT for Addiction (`cbt-addiction.html`) | `https://forms.gle/QXyXSHbhEmMsP4xm8` + embedded iframe |
 | Play Therapy (`play-therapy.html`) | `https://forms.gle/wudGkTh739NkATqBA` + embedded iframe |
 | DBT (`dbt.html`) | embedded iframe (`docs.google.com/forms/d/e/1FAIpQLSdN-Y8I38.../viewform?embedded=true`) |
-| العلاج بالتراحم — CFT (`compassion-focused.html`) | embedded iframe (`docs.google.com/forms/d/e/1FAIpQLSdMdE6.../viewform?embedded=true`) |
+| العلاج بالتراحم — CFT (`compassion-focused.html`) | form `docs.google.com/forms/d/e/1FAIpQLSdMdE6...` — **iframe removed, program is fully booked**; restore the embed if it reopens |
 
 **If no dedicated form link has been provided for a program**, render the registration CTA as a **non-clickable "قريبًا" button** instead of a working "سجّل الآن"/"تقديم الآن" link — never fall back to a shared form. The disabled button is a `<span class="btn btn-large" aria-disabled="true">` styled with the muted tokens (`var(--highlight-2)`, `var(--muted)`, `var(--line-strong)`, `box-shadow:none; cursor:default; pointer-events:none;`). Programs currently in this state: cbt (CBT Fundamentals), cbt-anxiety, cbt-chronic-pain, complex-trauma, playful-emdr, silent-retreat.
 
@@ -154,13 +154,13 @@ Three mutually exclusive states for cards in `.programs-grid`:
 | Coming soon | `badge-soon` | *(none)* | `<span class="btn btn-booked">قريبًا</span>` (non-clickable) |
 | Fully booked | `badge-booked` | `program-card-booked` | `<span class="btn btn-booked">اكتمل التسجيل</span>` (non-clickable) |
 
-Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (soon), CBT for Addiction (booked), CBT for Chronic Pain and Medical Conditions (soon), Complex Trauma (soon), Playful EMDR (soon), Trauma-Based Family Therapy (soon), العلاج بالتراحم / CFT (available), خلوة الصمت (soon).
+Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (soon), CBT for Addiction (booked), CBT for Chronic Pain and Medical Conditions (soon), Complex Trauma (soon), Playful EMDR (soon), Trauma-Based Family Therapy (soon), العلاج بالتراحم / CFT (booked), خلوة الصمت (soon).
 
 ## Header Programs Dropdown (index.html)
 
 The header nav's البرامج entry is a JS-driven dropdown (`.nav-dropdown` → `.nav-dropdown-toggle` button + `.nav-dropdown-menu`), not a section anchor. It lists **only the open-for-registration programs**, each linking to its detail page (booked/coming-soon programs are excluded). Toggle logic (click to open, close on outside-click / Escape) lives in `script.js`'s `DOMContentLoaded` block; the toggle is a `<button>` deliberately, to stay out of the `a[href^="#"]` smooth-scroll handler. On mobile it renders as a green pill inside the hamburger menu and expands inline. **When adding/removing an open program, update both the `.programs-grid` card and this dropdown.**
 
-Currently listed: DBT (`dbt.html`), Play Therapy (`play-therapy.html`). العلاج بالتراحم / CFT (`compassion-focused.html`) is open for registration and should also be added to this dropdown.
+Currently listed: DBT (`dbt.html`), Play Therapy (`play-therapy.html`).
 
 ## Design Tokens
 
