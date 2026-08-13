@@ -22,10 +22,11 @@ All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-
 
 | File | Purpose |
 |---|---|
-| `index.html` | Home page — hero, about, founders, programs grid, events gallery, footer |
+| `index.html` | Home page — `hero` → `#about` → `#founders` → `#programs` (grid) → `.timeline-section` (البرامج القادمة) → `.events-section` (gallery) → `.reviews-section` → footer |
 | `cbt.html` | Program detail page (CBT Fundamentals — Dr. Allen Miller) |
 | `cbt-anxiety.html` | Program detail page (CBT Anxiety & Personality — Dr. Sofia Chernoff) |
 | `dbt.html` | Program detail page (DBT Basic Training — Prof. Dr. Martin Bohus) |
+| `dbt-saudi.html` | Saudi-market variant of the DBT page, with its **own** registration form (`forms.gle/eRrb7R2FG2n8HTUGA`). Not linked from anywhere — see "Orphaned Pages". Content changes to `dbt.html` usually need mirroring here |
 | `cbt-addiction.html` | Program detail page (CBT for Addictive Disorders — Dr. Bruce S. Liese, Beck Institute) |
 | `play-therapy.html` | Program detail page (Play Therapy — Ann Beckley-Forest) |
 | `complex-trauma.html` | Program detail page (Complex Trauma — Annie Monaco & Brooke Eaton) |
@@ -41,6 +42,18 @@ All HTML files are **UTF-8 without BOM** and contain Arabic text. **Never round-
 | `events_images/` | Photos from past training events, shown in the "من فعالياتنا" gallery on `index.html` |
 | `data/` | Source documents for program content (e.g. `.docx` briefs); not served as part of the site |
 
+`.gitignore` keeps working materials out of the deploy (`data/`, `Agenda 2026.docx`, `Jan training/`, `timeline-section.png`). Loose `.docx` files dropped in the repo root are *not* covered by those rules and will show up as untracked in `git status` — leave them alone rather than committing them. Since `publish = "."`, anything committed at the root is publicly served.
+
+## Orphaned Pages (important)
+
+**Only `dbt.html`, `play-therapy.html` and `policies.html` are reachable by a link from anywhere on the site.** The other nine detail pages — including every قريبًا / اكتمل التسجيل program and `dbt-saudi.html` — have no inbound `href` at all, because non-open programs render their card CTA as a non-clickable `<span>`.
+
+Those pages are still live at their URLs and are used for direct links and ad campaigns, so:
+
+- **"Nothing links to it" is not evidence a page is dead.** Never delete or skip maintaining a detail page on that basis — confirm with the user first.
+- A new page will be invisible in navigation unless its program is open and added to the dropdown. That is expected, not a bug to fix.
+- The `netlify.toml` catch-all means a typo'd filename silently serves the home page instead of 404ing, so broken links do not announce themselves. Verify filenames by listing the directory.
+
 ## Adding a New Program Page
 
 Copy `cbt-anxiety.html` as the template (most complete, supports multiple instructors). Sections in order: `hero → about (instructor) → program (modules) → details (card grid) → partnerships* → cta-section (#register) → footer`. All pages share the same `styles.css` and `script.js`.
@@ -53,7 +66,7 @@ Add the **analytics & tracking block** (see "Analytics & Tracking" below) to eve
 
 Add the **floating WhatsApp button** (see below) to every new page just before `</body>`.
 
-When editing `styles.css` or `script.js`, update the `?v=YYYYMMDD` cache-bust string (use today's date) on **every** HTML page that references those files.
+When editing `styles.css` or `script.js`, update that file's `?v=` cache-bust string (use today's date) on **every** HTML page that references it. The two strings are versioned independently and are currently `styles.css?v=20260623b` and `script.js?v=20260524`, identical across all 14 pages — a mismatch between pages means a bump was applied incompletely. Editing only page content requires no bump.
 
 ## Registration & Contact
 
@@ -68,7 +81,9 @@ When editing `styles.css` or `script.js`, update the `?v=YYYYMMDD` cache-bust st
 
 **If no dedicated form link has been provided for a program**, render the registration CTA as a **non-clickable "قريبًا" button** instead of a working "سجّل الآن"/"تقديم الآن" link — never fall back to a shared form. The disabled button is a `<span class="btn btn-large" aria-disabled="true">` styled with the muted tokens (`var(--highlight-2)`, `var(--muted)`, `var(--line-strong)`, `box-shadow:none; cursor:default; pointer-events:none;`). Programs currently in this state: cbt (CBT Fundamentals), cbt-anxiety, cbt-chronic-pain, complex-trauma, playful-emdr, silent-retreat.
 
-For WhatsApp contact the number is **+201145804645** (`https://wa.me/201145804645`). This appears as both an inline button on `dbt.html` and as the floating button on all pages.
+For WhatsApp contact the number is **+201500990658** (`https://wa.me/201500990658`). This appears as both an inline button on `dbt.html` and as the floating button on all pages.
+
+Two stale references to the previous number (`201145804645`) survive in `family-therapy-teens.html` and one link inside `policies.html`. Use the current number in anything new; fix the holdouts only if asked.
 
 For email contact use **training@sourceforhelp.com**. This is used in all `mailto:` links across the site.
 
@@ -77,7 +92,7 @@ For email contact use **training@sourceforhelp.com**. This is used in all `mailt
 Every page has a fixed circular WhatsApp button (bottom-right, `.floating-whatsapp`) defined in `styles.css`. Add this snippet just before `</body>` on any new page:
 
 ```html
-<a href="https://wa.me/201145804645" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="تواصل عبر واتساب">
+<a href="https://wa.me/201500990658" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="تواصل عبر واتساب">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 ```
@@ -155,6 +170,12 @@ Three mutually exclusive states for cards in `.programs-grid`:
 | Fully booked | `badge-booked` | `program-card-booked` | `<span class="btn btn-booked">اكتمل التسجيل</span>` (non-clickable) |
 
 Current programs (in grid order): CBT Fundamentals (booked), DBT Training (available), Play Therapy (available), CBT Anxiety & Personality (soon), CBT for Addiction (booked), CBT for Chronic Pain and Medical Conditions (soon), Complex Trauma (soon), Playful EMDR (soon), Trauma-Based Family Therapy (soon), العلاج بالتراحم / CFT (booked), خلوة الصمت (soon).
+
+## Program Timeline (index.html)
+
+Below the grid, `.timeline-section` ("البرامج القادمة") repeats every upcoming program as a `.timeline-item` with `.timeline-date` / `.timeline-title` / `.timeline-meta`. It is ordered **chronologically** and lists upcoming programs only — CBT Fundamentals (May 2026) has already run and has no entry, though it keeps its grid card.
+
+**Every program therefore lives in at least two places on `index.html`: its `.programs-grid` card and its `.timeline-item`.** Any change to a program's date, title or trainer must be applied to both, plus the detail page — three files' worth of copy for one factual change. Open programs add a fourth place, the header dropdown. Grep the Arabic title before assuming you have found every occurrence.
 
 ## Header Programs Dropdown (index.html)
 
