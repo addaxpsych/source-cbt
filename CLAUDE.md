@@ -84,7 +84,9 @@ When editing `styles.css` or `script.js`, update that file's `?v=` cache-bust st
 
 For WhatsApp contact the number is **+201500990658** (`https://wa.me/201500990658`). This appears as both an inline button on `dbt.html` and as the floating button on all pages.
 
-Two stale references to the previous number (`201145804645`) survive in `family-therapy-teens.html` and one link inside `policies.html`. Use the current number in anything new; fix the holdouts only if asked.
+**Exception:** `cbt-chronic-pain.html` deliberately uses **+201145804645** for both its floating button and its inline registration button — that program is handled on a different line. Do not "fix" it to match the rest of the site.
+
+The same `201145804645` also appears in `family-therapy-teens.html` and one link inside `policies.html`, but those are unintentional leftovers from before the number change. Use `201500990658` in anything new; fix those two holdouts only if asked.
 
 For email contact use **training@sourceforhelp.com**. This is used in all `mailto:` links across the site.
 
