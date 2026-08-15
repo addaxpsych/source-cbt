@@ -423,6 +423,24 @@ a {
     object-fit: contain;
 }
 
+/* Organising bodies — shown large above the partner pill */
+.hero-orgs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s var(--ease-out) both;
+}
+
+.hero-org-logo {
+    height: clamp(64px, 10vw, 96px);
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
 .hero-eyebrow {
     display: inline-flex;
     align-items: center;
