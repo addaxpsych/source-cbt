@@ -22,13 +22,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const header = document.querySelector('.header');
 const scrollThreshold = 50;
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > scrollThreshold) {
-        header.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-    } else {
-        header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-    }
-});
+// Standalone landing pages (e.g. cbt-saudi-2026.html) ship without a header
+if (header) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > scrollThreshold) {
+            header.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+        } else {
+            header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+        }
+    });
+}
 
 // ==========================================
 // Intersection Observer for Animations
