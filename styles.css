@@ -393,6 +393,8 @@ a {
 .hero-partner {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 0.7rem 1.25rem 0.7rem 1.5rem;
     background: rgba(255, 255, 255, 0.85);
@@ -2491,5 +2493,103 @@ section h2 {
 
     .review-card {
         padding: 1.5rem;
+    }
+}
+
+/* ── Social Proof — post screenshots ───────────────────────── */
+.proof-section {
+    background: var(--highlight);
+    background-image:
+        radial-gradient(70% 50% at 50% 0%, rgba(20, 145, 155, 0.06), transparent 70%),
+        linear-gradient(180deg, var(--highlight) 0%, var(--highlight-2) 100%);
+}
+
+.proof-section .section-eyebrow {
+    display: block;
+    text-align: center;
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.proof-shot {
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+
+.proof-shot:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.proof-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.proof-caption {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.proof-caption span {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ── Press / X embeds ──────────────────────────────────────── */
+.press-section {
+    background: #ffffff;
+}
+
+.press-section .section-eyebrow {
+    display: block;
+    text-align: center;
+}
+
+.press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    align-items: start;
+    margin-top: 2.5rem;
+}
+
+.press-grid .twitter-tweet {
+    margin-inline: auto !important;
+    max-width: 100%;
+}
+
+.press-note {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+@media (max-width: 600px) {
+    .proof-grid,
+    .press-grid {
+        grid-template-columns: 1fr;
     }
 }
